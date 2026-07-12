@@ -2,5 +2,5 @@
 
 #pragma once
 
+// Include the core minimal header for basic Unreal Engine types and macros
 #include "CoreMinimal.h"
-
