@@ -35,6 +35,17 @@ public:
 
 	UFUNCTION(BlueprintCallable, meta=(BlueprintThreadSafe))
 	FORCEINLINE bool IsNotMoving() const { return Speed == 0; }
+
+	UFUNCTION(BlueprintCallable, meta = (BlueprintThreadSafe))
+	FORCEINLINE float GetSmoothedYawSpeed() const { return SmoothedYawSpeed; }
+
+	UPROPERTY(EditAnywhere, Category = "Animation")
+	float SlopeInterpSpeed = 10.f;
+
+	UFUNCTION(BlueprintCallable, Category = "Animation", meta = (BlueprintThreadSafe))
+	float CalculateLeanAngle() const;
+	UFUNCTION(BlueprintCallable, Category = "Animation", meta = (BlueprintThreadSafe))
+	float CalculateSlopeAngle() const;
 private:
 	 
 	UPROPERTY()
@@ -44,5 +55,22 @@ private:
 	class UCharacterMovementComponent* OwnerMovementComponent = nullptr;
 
 	float Speed;
+	float SmoothedYawSpeed;
+
+	float LeanAngle = 0.f;
+	float SlopeAngle = 0.f;
+
+	UPROPERTY(EditAnywhere, Category = "Animation")
+	float LeanScale = 0.6f;
+
+	UPROPERTY(EditAnywhere, Category = "Animation")
+	float MaxLeanAngle = 45.f;
+
+
+	
+
+
+
+
 
 };
