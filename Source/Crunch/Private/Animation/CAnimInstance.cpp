@@ -21,6 +21,11 @@ void UCAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 		Speed = OwnerCharacter->GetVelocity().Length();	
 
 	}
+
+	if(OwnerMovementComponent)
+	{
+		bIsJumping = OwnerMovementComponent->IsFalling();
+	}
 }
 
 void UCAnimInstance::NativeThreadSafeUpdateAnimation(float DeltaSeconds)
