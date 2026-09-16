@@ -37,6 +37,9 @@ public:
 	FORCEINLINE bool IsNotMoving() const { return Speed == 0; }
 
 	UFUNCTION(BlueprintCallable, meta = (BlueprintThreadSafe))
+	FORCEINLINE float GetYawSpeed() const { return YawSpeed; }
+
+	UFUNCTION(BlueprintCallable, meta = (BlueprintThreadSafe))
 	FORCEINLINE float GetSmoothedYawSpeed() const { return SmoothedYawSpeed; }
 
 	UFUNCTION(BlueprintCallable, meta = (BlueprintThreadSafe))
@@ -45,6 +48,11 @@ public:
 	UFUNCTION(BlueprintCallable, meta = (BlueprintThreadSafe))
 	FORCEINLINE bool IsFalling() const { return !bIsJumping; }
 
+	UFUNCTION(BlueprintCallable, meta = (BlueprintThreadSafe))
+	FORCEINLINE float GetLookYawOffset() const { return LookRotationOffset.Yaw; }
+
+	UFUNCTION(BlueprintCallable, meta = (BlueprintThreadSafe))
+	FORCEINLINE float GetLookPitchOffset() const { return LookRotationOffset.Pitch; }
 
 	UFUNCTION(BlueprintCallable, Category = "Animation", meta = (BlueprintThreadSafe))
 	float CalculateLeanAngle() const;
@@ -59,7 +67,13 @@ private:
 	class UCharacterMovementComponent* OwnerMovementComponent = nullptr;
 
 	float Speed;
+	float YawSpeed;
+	FRotator PreviousBodyRotation;
 	float SmoothedYawSpeed;
+
+	UPROPERTY(EditAnywhere, Category = "Animation")
+	float YawSpeedSmoothingFactor = 1.f;
+
 	float LeanAngle = 0.f;
 	float SlopeAngle = 0.f;
 
@@ -74,6 +88,7 @@ private:
 
 	bool bIsJumping;
 
+	FRotator LookRotationOffset;
 
 
 	
