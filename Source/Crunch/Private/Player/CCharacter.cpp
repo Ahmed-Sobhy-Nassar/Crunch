@@ -24,6 +24,17 @@ ACCharacter::ACCharacter()
 
 }
 
+void ACCharacter::ServerSideInit()
+{
+	CAbilitySystemComponent->InitAbilityActorInfo(this, this);
+	CAbilitySystemComponent->ApplyGameplayEffects();
+}
+
+void ACCharacter::ClientSideInit()
+{
+	CAbilitySystemComponent->InitAbilityActorInfo(this, this);
+}
+
 // Called when the game starts or when spawned into the world
 // Used for initialization that requires world context
 void ACCharacter::BeginPlay()

@@ -19,7 +19,8 @@ class ACCharacter : public ACharacter, public IAbilitySystemInterface
 public:
 	// Sets default values for this character's properties
 	ACCharacter();
-
+	void ServerSideInit();
+	void ClientSideInit();
 	
 
 protected:
@@ -43,7 +44,7 @@ public:
 
 private:
 	// Ability system component for handling abilities and attributes
-	UPROPERTY(VisibleDefaultsOnly,Catgory = "GAS")
+	UPROPERTY(VisibleDefaultsOnly,Category = "GAS")
 	class UCAbilitySystemComponent* CAbilitySystemComponent;
 	// Attribute set for managing character attributes (health, stamina, etc.)
 	UPROPERTY()
@@ -52,4 +53,4 @@ private:
 
 #pragma endregion
 
-};
+};																										 

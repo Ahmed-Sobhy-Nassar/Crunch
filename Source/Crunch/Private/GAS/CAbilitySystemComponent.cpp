@@ -5,7 +5,7 @@
 
 void UCAbilitySystemComponent::ApplyGameplayEffects()
 {
-
+	if(!GetOwner() || !GetOwner()->HasAuthority()) return;
 	for(const TSubclassOf<UGameplayEffect> EffectClass : InitialEffects)
 	{
 		FGameplayEffectSpecHandle EffectSpectHandle = MakeOutgoingSpec(EffectClass, 1, MakeEffectContext());
