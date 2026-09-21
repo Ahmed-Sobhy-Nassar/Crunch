@@ -14,4 +14,11 @@ class UCAbilitySystemComponent : public UAbilitySystemComponent
 {
 	GENERATED_BODY()
 	
+public:
+	void ApplyGameplayEffects();
+									
+private:
+
+	UPROPERTY(EditeDefaultsOnly, Category = "Gameplay Effects")
+	TArray<TSubclassOf<UGameplayEffect>> InitialEffects;
 };

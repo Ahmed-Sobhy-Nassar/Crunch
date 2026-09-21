@@ -43,7 +43,7 @@ public:
 
 private:
 	// Ability system component for handling abilities and attributes
-	UPROPERTY()
+	UPROPERTY(VisibleDefaultsOnly,Catgory = "GAS")
 	class UCAbilitySystemComponent* CAbilitySystemComponent;
 	// Attribute set for managing character attributes (health, stamina, etc.)
 	UPROPERTY()
