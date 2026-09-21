@@ -1,12 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
-
-// Core minimal types (FVector, FString, etc.)
 #include "CoreMinimal.h"
-// Base character class with skeletal mesh, movement, and collision support
 #include "GameFramework/Character.h"
-// Generated header for Unreal reflection and serialization
+#include "AbilitySystemInterface.h"
 #include "CCharacter.generated.h"
 
 /**
@@ -15,7 +12,7 @@
  * Disables mesh collision by default for animation-driven characters.
  */
 UCLASS()
-class ACCharacter : public ACharacter
+class ACCharacter : public ACharacter, public IAbilitySystemInterface
 {
 	GENERATED_BODY()
 
@@ -35,5 +32,24 @@ public:
 
 	// Called to bind functionality to input (legacy input system)
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+
+
+#pragma region GAS
+
+public:
+
+	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
+
+private:
+	// Ability system component for handling abilities and attributes
+	UPROPERTY()
+	class UCAbilitySystemComponent* CAbilitySystemComponent;
+	// Attribute set for managing character attributes (health, stamina, etc.)
+	UPROPERTY()
+	class UCAttributeSet* CAttributeSet;
+
+
+#pragma endregion
 
 };

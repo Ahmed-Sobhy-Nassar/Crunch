@@ -1,21 +1,12 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
-// Include the player character header
 #include "Player/CPlayerCharacter.h"
-// Redundant include of own header (already included above)
 #include "CPlayerCharacter.h"
-// Camera component for third-person view
 #include "Camera/CameraComponent.h"
-// Enhanced Input subsystem for managing input mapping contexts
 #include "EnhancedInputSubsystems.h"
-// Enhanced Input component for binding input actions
 #include "EnhancedInputComponent.h"
-// Character movement component for locomotion and rotation settings
 #include"GameFramework/CharacterMovementComponent.h"
-// Spring arm component for camera boom (lag, collision avoidance)
 #include "GameFramework/SpringArmComponent.h"
-// Player controller for accessing the Enhanced Input subsystem
 #include "GameFramework/PlayerController.h"
 
 // Constructor: initializes camera components and movement behavior
@@ -32,7 +23,7 @@ ACPlayerCharacter::ACPlayerCharacter()
 	ViewCam->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
 
 	// Disable controller rotation on pitch so the character doesn't tilt with the camera
-	bUseControllerRotationPitch = false;	
+	bUseControllerRotationPitch = false;
 
 	// Enable orient-to-movement: character rotates to face the direction of travel
 	GetCharacterMovement()->bOrientRotationToMovement = true;
@@ -48,11 +39,11 @@ void ACPlayerCharacter::PawnClientRestart()
 	Super::PawnClientRestart();
 	// Get the owning player controller to access the Enhanced Input subsystem
 	APlayerController* OwnigPlayerController = Cast<APlayerController>(GetController());
-	if(OwnigPlayerController)
+	if (OwnigPlayerController)
 	{
 		// Get the Enhanced Input subsystem from the local player
 		UEnhancedInputLocalPlayerSubsystem* InputSubsystem = OwnigPlayerController->GetLocalPlayer()->GetSubsystem<UEnhancedInputLocalPlayerSubsystem>();
-		if(InputSubsystem)
+		if (InputSubsystem)
 		{
 			// Remove then re-add the mapping context to avoid duplicates
 			InputSubsystem->RemoveMappingContext(GameplayInputMappingContext);

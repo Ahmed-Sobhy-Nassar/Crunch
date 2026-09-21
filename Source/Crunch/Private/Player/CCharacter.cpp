@@ -3,6 +3,10 @@
 
 // Include the base character header
 #include "Player/CCharacter.h"
+#include "Components/SkeletalMeshComponent.h"
+#include "GAS/CAbilitySystemComponent.h"
+#include "GAS/CAttributeSet.h"
+
 
 // Constructor: initializes default character properties
 ACCharacter::ACCharacter()
@@ -14,6 +18,9 @@ ACCharacter::ACCharacter()
 	// Disable collision on the skeletal mesh to prevent physics interference
 	// with animation-driven characters
 	GetMesh()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
+	CAbilitySystemComponent = CreateDefaultSubobject<UCAbilitySystemComponent>(TEXT("CAbilitySystemComponent"));
+	CAttributeSet = CreateDefaultSubobject<UCAttributeSet>(TEXT("CAttributeSet"));
 
 }
 
@@ -43,3 +50,11 @@ void ACCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 }
+
+
+#pragma region GAS
+UAbilitySystemComponent* ACCharacter::GetAbilitySystemComponent() const
+{
+	return CAbilitySystemComponent;
+}
+#pragma endregion

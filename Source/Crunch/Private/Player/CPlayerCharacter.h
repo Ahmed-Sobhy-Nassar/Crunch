@@ -1,14 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
-
-// Core minimal types (FVector, FString, etc.)
 #include "CoreMinimal.h"
-// Base character class this player character inherits from
 #include "Player/CCharacter.h"
-// FInputActionValue type for Enhanced Input action callbacks
 #include "InputActionValue.h"
-// Generated header for Unreal reflection and serialization
 #include "CPlayerCharacter.generated.h"
 
 /**
@@ -61,7 +56,7 @@ private:
 	void HandelLookInputAction(const FInputActionValue& InputActionValue);
 	// Handles movement input: converts 2D input to camera-relative movement
 	void HandelMoveInputAction(const FInputActionValue& InputActionValue);
-	
+
 	// Returns the camera's right direction for strafing movement
 	FVector GetLookRigthDir();
 	// Returns the camera's forward direction for forward/backward movement
