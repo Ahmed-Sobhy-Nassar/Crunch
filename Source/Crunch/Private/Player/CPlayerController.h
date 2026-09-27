@@ -25,6 +25,13 @@ class ACPlayerController : public APlayerController
 	void AcknowledgePossession( APawn* NewPawn) override;
 
 private:
+	void SpawnGameplayWidget();
 	UPROPERTY()
 	class ACPlayerCharacter* CPlayerCharacter;
+
+	UPROPERTY(EditDefaultsOnly, Category = "UI")
+	TSubclassOf<class UGameplayWidget> GameplayWidgetClass;
+
+	UPROPERTY()
+	class UGameplayWidget* GameplayWidget;
 };

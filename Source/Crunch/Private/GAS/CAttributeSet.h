@@ -23,10 +23,12 @@ class UCAttributeSet : public UAttributeSet
 	GENERATED_BODY()
 
 public:
+	// Sets default values for this attribute set's properties
 	ATTRIBUTE_ACCESSORS(UCAttributeSet, Health); 
 	ATTRIBUTE_ACCESSORS(UCAttributeSet, MaxHealth); 
 	ATTRIBUTE_ACCESSORS(UCAttributeSet, Mana); 
 	ATTRIBUTE_ACCESSORS(UCAttributeSet, MaxMana); 
+	// Override GetLifetimeReplicatedProps to specify which properties should be replicated
     virtual void GetLifetimeReplicatedProps(TArray< class FLifetimeProperty>& OutLifetimeProps) const override;
 private:
 
@@ -40,6 +42,7 @@ private:
 	FGameplayAttributeData MaxMana;
 
 	UFUNCTION()
+	// Replication notification functions
 	void OnRep_Health(const FGameplayAttributeData& OldValue);
 	
 	UFUNCTION()
