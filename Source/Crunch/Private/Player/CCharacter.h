@@ -36,7 +36,8 @@ public:
 
 
 
-#pragma region GAS
+ // Gameplay Ability System
+#pragma region GAS	 
 
 public:
 
